@@ -23,6 +23,8 @@ def retry(
     :param retry_logger: logger.warning(fmt, error, delay) will be called on failed attempts.
         Default: retry.logging_logger. if None, logging is disabled.
 
+    The sleep time is calculated as ``sleep_time = backoff_factor * (2 ** (n_retry - 1))``
+
     Examples:
         >>> from python_retry import retry
         >>>
