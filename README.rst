@@ -6,7 +6,7 @@ Python Retry
     :alt: License-MIT
 
 .. image:: https://readthedocs.org/projects/python-retry/badge/?version=latest
-    :target: https://python-retry.readthedocs.io/en/latest/?badge=latest
+    :target: https://py-retry.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 .. image:: https://github.com/pyprogrammerblog/python-retry/workflows/Test%20Suite/badge.svg/
@@ -25,7 +25,7 @@ Features
 3. Specify wait condition (i.e. exponential backoff sleeping between attempts)
 4. Customize retrying on Exceptions
 
-`Read the docs <https://python-retry.readthedocs.io/en/latest/>`_ for further information.
+`Read the docs <https://py-retry.readthedocs.io/en/latest/>`_ for further information.
 
 Installation
 -------------
@@ -75,4 +75,4 @@ More advanced
 Documentation
 ---------------
 
-You can find here at `Read the docs <https://python-retry.readthedocs.io/en/latest/>`_ the complete documentation.
+You can find here at `Read the docs <https://py-retry.readthedocs.io/en/latest/>`_ the complete documentation.
