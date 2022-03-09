@@ -47,13 +47,19 @@ Example
     ... def div(num: int, den: int):
     ...     return num/den
     >>>
-    >>> with pytest.raises(TypeError):
-    ...     div(1, 0)
-    >>>
+    >>> div(1, 0)
+
+
+More advanced
+--------------
+
+.. code:: python
+
     >>> import logging
     >>> logger = logging.getLogger("foo")
+    >>>
     >>> @retry(
-    ... retry_on=(ZeroDivisionError,),
+    ...     retry_on=(ZeroDivisionError,),
     ...     max_retries=2,
     ...     backoff_factor=1,
     ...     supress_exception=True,
@@ -62,7 +68,7 @@ Example
     ... def div(num: int, den: int):
     ...     return num / den
     >>>
-    >>> assert not div(1, 0)
+    >>> div(1, 0)
     >>>
 
 
