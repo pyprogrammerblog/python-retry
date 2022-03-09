@@ -26,6 +26,7 @@ Features
 
    installation
    quickstart
+   retry
    license
    help
 
