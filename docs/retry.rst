@@ -1,13 +1,8 @@
 .. _client:
 
-Python retry decorator
+Python Retry Decorator
 ========================
 
-The intention is to provide a decorator with rey functionality.
-
-
-Python Retry Specifications
-------------------------------
 
 .. automodule:: python_retry
    :members: retry
