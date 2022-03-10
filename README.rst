@@ -69,7 +69,6 @@ More advanced
     ...     return num / den
     >>>
     >>> div(1, 0)
-    >>>
 
 
 Documentation

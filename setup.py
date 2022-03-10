@@ -18,7 +18,7 @@ if os.environ.get("READTHEDOCS") == "True":
 tests_require = ["pytest", ]
 
 setup(
-    name="Python Retry",
+    name="python-retry",
     version=version,
     description="Retry package for Python",
     long_description=long_description,
