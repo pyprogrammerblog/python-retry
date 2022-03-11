@@ -50,7 +50,7 @@ Example
     >>> div(1, 0)
 
 
-More advanced
+Advanced use
 --------------
 
 .. code:: python
