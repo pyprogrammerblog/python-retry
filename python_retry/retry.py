@@ -18,26 +18,29 @@ def retry(
 
     :param max_retries: int. Defaults to 3.
     :param backoff_factor: int. Defaults to 1.
-    :param retry_on: tuple. Defaults to None.
-    :param supress_exception: bool. Defaults to False.
+    :param retry_on: tuple. A tuple of exceptions.
+    When no argument is passed all exceptions are catched.
+    Defaults to None.
+    :param supress_exception: bool. Supress the last exception raised.
+    Defaults to False.
     :param retry_logger: logger.warning(fmt, error, delay) will be called on failed attempts.
-        Default: retry.logging_logger. if None, logging is disabled.
+    Default: retry.logging_logger. if None, logging is disabled.
 
-    The sleep time is calculated as ``sleep_time = backoff_factor * (2 ** (n_retry - 1))``
+    The sleep time is calculated as **sleep_time = backoff_factor * (2 ** (n_retry - 1))**.
 
     Examples:
         >>> from python_retry import retry
+        >>> import pytest
+        >>> import logging
+        >>>
+        >>> LOGGER = logging.getLogger("foo")
         >>>
         >>> @retry()
         ... def div(num: int, den: int):
         ...     return num/den
         >>>
-        >>> import pytest
-        >>> with pytest.raises(TypeError):
-        ...     div(1, 0)
+        >>> div(1, 0)
         >>>
-        >>> import logging
-        >>> LOGGER = logging.getLogger("foo")
         >>> @retry(
         ... retry_on=(ZeroDivisionError,),
         ...     max_retries=2,
@@ -48,8 +51,7 @@ def retry(
         ... def div(num: int, den: int):
         ...     return num / den
         >>>
-        >>> assert not div(1, 0)
-        >>>
+        >>> div(1, 0)
     """
 
     def decorator(func):
