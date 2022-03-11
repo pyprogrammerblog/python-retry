@@ -5,7 +5,7 @@ Python Retry
     :target: https://github.com/pyprogrammerblog/python-retry/blob/master/LICENSE
     :alt: License-MIT
 
-.. image:: https://readthedocs.org/projects/python-retry/badge/?version=latest
+.. image:: https://readthedocs.org/projects/py-retry/badge/?version=latest
     :target: https://py-retry.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
