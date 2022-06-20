@@ -16,6 +16,10 @@ Python Retry
     :target: https://badge.fury.io/py/python-retry/
     :alt: Badge PyPi
 
+.. image:: https://coveralls.io/repos/github/pyprogrammerblog/python-retry/badge.svg?branch=master
+    :target: https://coveralls.io/github/pyprogrammerblog/python-retry?branch=master
+    :alt: Coverage
+
 
 Features
 ----------
