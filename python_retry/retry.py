@@ -1,3 +1,6 @@
+from python_retry.retry_patterns import InnmediateRetryPattern
+from python_retry.retry_patterns import RetryPatterns
+
 import functools
 import logging
 import time
@@ -8,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 def retry(
     max_retries: int = 3,
-    backoff_factor: int = 1,
+    pattern: RetryPatterns = InnmediateRetryPattern(),
     retry_on: (Exception,) = None,
     supress_exception: bool = False,
     retry_logger: logging.Logger = None,
@@ -17,7 +20,7 @@ def retry(
     Retry decorator
 
     :param max_retries: int. Defaults to 3.
-    :param backoff_factor: int. Defaults to 1.
+    :param pattern: RetryPatterns. Defaults to InnmediateRetryPattern.
     :param retry_on: tuple. A tuple of exceptions.
     When no argument is passed all exceptions are catched.
     Defaults to None.
@@ -42,9 +45,8 @@ def retry(
         >>> div(1, 0)
         >>>
         >>> @retry(
-        ... retry_on=(ZeroDivisionError,),
+        ...     retry_on=(ZeroDivisionError,),
         ...     max_retries=2,
-        ...     backoff_factor=1,
         ...     supress_exception=True,
         ...     retry_logger=LOGGER
         ... )
@@ -53,6 +55,7 @@ def retry(
         >>>
         >>> div(1, 0)
     """
+    retry_mechanism = pattern.retry_mechanism()
 
     def decorator(func):
         @functools.wraps(func)
@@ -69,8 +72,9 @@ def retry(
                         if supress_exception:
                             return
                         raise e
+
                     # time sleep
-                    seconds = backoff_factor * (2 ** (n - 1))
+                    seconds = retry_mechanism(n)
                     if retry_logger is not None:
                         log_str = "%s, retrying in %s seconds..."
                         retry_logger.warning(log_str, e, seconds)
